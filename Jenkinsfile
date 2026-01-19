@@ -49,6 +49,14 @@ pipeline{
             body : 'Build success for Flask-App',
             Subject : 'Build successful'
         }
-    }  
+    }
+     Failure{
+         script{
+             emailext from: 'itsakku09@gmail.com',
+               to: 'itsakku09@gmail.com',
+                body: 'Build Failed!!!',
+                Subject: 'Build Failed'
+         }
+     }
   }
 }
