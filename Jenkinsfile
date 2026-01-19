@@ -3,14 +3,17 @@ pipeline{
     agent {label "dev"}
     stages{
         stage("Code Clone"){
-            clone("https://github.com/AnkitaPandey23/flask-app-new.git", "main")
+            steps{
+                git branch: 'main',
+                url: 'https://github.com/AnkitaPandey23/flask-app-new.git'
+            }
         }
         stage("Build"){
             steps{
                 sh "docker build -t two-tier-flask-app ."
                 sh "docker image tag two-tier-flask-app ankitapandey5/two-tier-flask-app:latest"
             }
-    }
+        }
         stage("Test"){
             steps{
                 echo "testing done"
@@ -46,7 +49,7 @@ pipeline{
             emailext from: 'itsakku09@gmail.com',
             to : 'itsakku09@gmail.com',
             body : 'Build success for Flask-App',
-            Subject : 'Build successful'
+            subject : 'Build successful'
         }
     }
      failure{
@@ -54,7 +57,7 @@ pipeline{
              emailext from: 'itsakku09@gmail.com',
                to: 'itsakku09@gmail.com',
                 body: 'Build Failed!!!'
-                Subject: 'Build Failed!!!'
+                subject: 'Build Failed!!!'
          }
      }
   }
