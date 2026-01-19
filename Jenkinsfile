@@ -40,4 +40,15 @@ pipeline{
             }
         }
     }
+
+ post{
+    success{
+        script{
+            emailext from: 'itsakku09@gmail.com',
+            to : 'itsakku09@gmail.com',
+            body : 'Build success for Flask-App',
+            Subject : 'Build successful'
+        }
+    }  
+  }
 }
