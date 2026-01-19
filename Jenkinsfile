@@ -3,10 +3,7 @@ pipeline{
     agent {label "dev"}
     stages{
         stage("Code Clone"){
-            steps{
-                git branch: 'main',
-                url: 'https://github.com/AnkitaPandey23/flask-app-new.git'
-            }
+            clone('https://github.com/AnkitaPandey23/flask-app-new.git','main')   
         }
         stage("Build"){
             steps{
