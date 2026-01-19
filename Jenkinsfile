@@ -54,7 +54,7 @@ pipeline{
          script{
              emailext from: 'itsakku09@gmail.com',
                to: 'itsakku09@gmail.com',
-                body: 'Build Failed!!!',
+                body: 'Build Failed!!!'
                 Subject: 'Build Failed!!!'
          }
      }
